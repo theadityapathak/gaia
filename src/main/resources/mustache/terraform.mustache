@@ -6,7 +6,7 @@ echo '[gaia] installing curl'
 apk -q add curl
 
 echo '[gaia] cloning {{gitRepositoryUrl}}' | awk '{ sub(/oauth2:(.*)@/, "oauth2:[MASKED]@");}1'
-git clone {{gitRepositoryUrl}} module
+git -c http.sslVerify=false clone {{gitRepositoryUrl}} module
 
 cd module
 {{#gitDirectory}}
