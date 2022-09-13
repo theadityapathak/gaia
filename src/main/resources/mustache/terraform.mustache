@@ -13,14 +13,6 @@ cd module
     cd {{gitDirectory}}
 {{/gitDirectory}}
 
-echo '[gaia] generating backend configuration'
-echo 'terraform {
-    backend "http" {
-        address = "{{externalUrl}}/api/runner/state/{{stackId}}"
-        username = "{{stateApiUser}}"
-        password = "{{stateApiPassword}}"
-    }
-}' > backend.tf
 
 echo '[gaia] generating tfvars variable file'
 curl --silent --user {{stateApiUser}}:{{stateApiPassword}} {{externalUrl}}/api/runner/stacks/{{stackId}}.tfvars > gaia.auto.tfvars
